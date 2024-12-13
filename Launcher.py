@@ -770,36 +770,36 @@ def get_neighbors(pos, grid_size):
 screen = pygame.display.set_mode((constants['WIDTH'], constants['HEIGHT']))
 pygame.display.set_caption("TBBP Game")
 
-font1 = pygame.font.Font('ps2.ttf', 15)
-font = pygame.font.Font('ps2.ttf', 15)
-scorefont = pygame.font.Font('ps2.ttf', 20)
-bloodfont = pygame.font.Font('bloody.ttf', 20)
-fps_font = pygame.font.Font('ps2.ttf', 20)
+font1 = pygame.font.Font('assets/font/ps2.ttf', 15)
+font = pygame.font.Font('assets/font/ps2.ttf', 15)
+scorefont = pygame.font.Font('assets/font/ps2.ttf', 20)
+bloodfont = pygame.font.Font('assets/font/bloody.ttf', 20)
+fps_font = pygame.font.Font('assets/font/ps2.ttf', 20)
 fps_color = constants['GAMMA']
 clock = pygame.time.Clock()
 
-player_image = pygame.image.load('player.png').convert_alpha()
+player_image = pygame.image.load('assets/graphics/player.png').convert_alpha()
 player_mask = pygame.mask.from_surface(player_image)
-zombie_images = [pygame.image.load(f'zombie{i}.png').convert_alpha() for i in range(1, 12)]
-background_image = pygame.image.load("zombies.png").convert()
-chest_image = pygame.image.load('chest.png').convert_alpha()
-orb_image = pygame.image.load('orb.png').convert_alpha()
+zombie_images = [pygame.image.load(f'assets/graphics/zombie{i}.png').convert_alpha() for i in range(1, 10)]
+background_image = pygame.image.load("assets/graphics/zombies.png").convert()
+chest_image = pygame.image.load('assets/graphics/chest.png').convert_alpha()
+orb_image = pygame.image.load('assets/graphics/orb.png').convert_alpha()
 
 all_zombies_group = pygame.sprite.Group()
-weapon_font = pygame.font.Font('ps2.ttf', 17)
-version_font = pygame.font.Font('ps2.ttf', 15)
+weapon_font = pygame.font.Font('assets/font/ps2.ttf', 17)
+version_font = pygame.font.Font('assets/font/ps2.ttf', 15)
 muzzle_flashes = pygame.sprite.Group()
 
 pygame.mixer.init()
-fire_sound_ak47 = pygame.mixer.Sound('bullet.mp3')
-fire_sound_beretta = pygame.mixer.Sound('glock.mp3')
-fire_sound_mossberg = pygame.mixer.Sound('mossberg.mp3')
-hit_sound = pygame.mixer.Sound('splat.mp3')
-reload_sound = pygame.mixer.Sound('reload.mp3')
-fire_sound_mosin = pygame.mixer.Sound('mosin.mp3')
-firing_sound_mosin = pygame.mixer.Sound('mosinshot.mp3')
-fire_sound_PKM = pygame.mixer.Sound('pkm.mp3')
-fire_sound_skorpian = pygame.mixer.Sound('skorpian.mp3')
+fire_sound_ak47 = pygame.mixer.Sound('assets/sound/bullet.mp3')
+fire_sound_beretta = pygame.mixer.Sound('assets/sound/glock.mp3')
+fire_sound_mossberg = pygame.mixer.Sound('assets/sound/mossberg.mp3')
+hit_sound = pygame.mixer.Sound('assets/sound/splat.mp3')
+reload_sound = pygame.mixer.Sound('assets/sound/reload.mp3')
+fire_sound_mosin = pygame.mixer.Sound('assets/sound/mosin.mp3')
+firing_sound_mosin = pygame.mixer.Sound('assets/sound/mosinshot.mp3')
+fire_sound_PKM = pygame.mixer.Sound('assets/sound/pkm.mp3')
+fire_sound_skorpian = pygame.mixer.Sound('assets/sound/skorpian.mp3')
 
 def render_upgrade_panel():
     overlay = pygame.Surface((constants['WIDTH'], constants['HEIGHT']))
@@ -994,8 +994,8 @@ def spawn_zombie(zombie_type):
         'g': (ZombieClass.g, zombie_images[6]),
         'h': (ZombieClass.h, zombie_images[7]),
         'i': (ZombieClass.i, zombie_images[8]),
-        'j': (ZombieClass.j, zombie_images[9]),
-        'k': (ZombieClass.k, zombie_images[10]),
+        #'j': (ZombieClass.j, zombie_images[9]),
+        #'k': (ZombieClass.k, zombie_images[10]),
     }
     zombie_class, zombie_image = zombie_classes.get(zombie_type, (ZombieClass.a, zombie_images[0]))
     zombie = Zombie(x, y, player, zombie_image, zombie_class)
